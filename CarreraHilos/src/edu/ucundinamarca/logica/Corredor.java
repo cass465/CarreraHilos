@@ -19,8 +19,7 @@ public class Corredor extends Thread {
     private char avatar;
     private byte estado;
     private Equipo equipo;
-    private List<String> posiciones;
-    private Equipo ganador;
+    private String paso;
 
     public Corredor(char avatar, byte estado, Equipo equipo) {
         this.avatar = avatar;
@@ -30,7 +29,6 @@ public class Corredor extends Thread {
 
     @Override
     public void run() {
-        posiciones = new ArrayList<String>();
         if (this.estado == 1) {
             correr();
             synchronized (this.equipo) {
@@ -62,12 +60,12 @@ public class Corredor extends Thread {
 
     public void correr() {
         byte nPasos = 0;
-        for (int i = 0; i <= 10; i = nPasos + i) {
+        for (int i = 0; i <= 20; i = nPasos + i) {
             switch (i) {
-                case 8:
+                case 18:
                     nPasos = (byte) (Math.random() * 2 + 1);
                     break;
-                case 9:
+                case 19:
                     nPasos = 1;
                     break;
                 default:
@@ -77,7 +75,7 @@ public class Corredor extends Thread {
 
             switch (nPasos) {
                 case 1:
-                    System.out.print(equipo.getColor() + avatar);
+                    System.out.print(this.equipo.getColor() + this.avatar);
                      {
                         try {
                             Thread.sleep(1000);
@@ -87,7 +85,7 @@ public class Corredor extends Thread {
                     }
                     break;
                 case 2:
-                    System.out.print(equipo.getColor() + "-" + avatar);
+                    System.out.print(this.equipo.getColor() + "-" + this.avatar);
                      {
                         try {
                             Thread.sleep(1000);
@@ -97,7 +95,7 @@ public class Corredor extends Thread {
                     }
                     break;
                 case 3:
-                    System.out.print(equipo.getColor() + "--" + avatar);
+                    System.out.print(this.equipo.getColor() + "--" + this.avatar);
                      {
                         try {
                             Thread.sleep(1000);
@@ -107,7 +105,7 @@ public class Corredor extends Thread {
                     }
                     break;
             }
-            if (i + nPasos == 10) {
+            if (i + nPasos == 20) {
                 return;
             }
         }
