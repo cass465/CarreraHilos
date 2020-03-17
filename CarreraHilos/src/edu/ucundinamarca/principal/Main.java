@@ -5,6 +5,8 @@
  */
 package edu.ucundinamarca.principal;
 
+import edu.ucundinamarca.logica.Carrera;
+
 /**
  *
  * @author cass465
@@ -16,6 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new Carrera().correr();
+        
     }
     
 }
