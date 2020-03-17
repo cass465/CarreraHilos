@@ -75,7 +75,7 @@ public class Corredor extends Thread {
 
             switch (nPasos) {
                 case 1:
-                    System.out.print(this.equipo.getColor() + this.avatar);
+                    this.paso = (this.equipo.getColor() + "-" + this.avatar);
                      {
                         try {
                             Thread.sleep(1000);
@@ -85,7 +85,7 @@ public class Corredor extends Thread {
                     }
                     break;
                 case 2:
-                    System.out.print(this.equipo.getColor() + "-" + this.avatar);
+                    this.paso = (this.equipo.getColor() + "--" + this.avatar);
                      {
                         try {
                             Thread.sleep(1000);
@@ -95,7 +95,7 @@ public class Corredor extends Thread {
                     }
                     break;
                 case 3:
-                    System.out.print(this.equipo.getColor() + "--" + this.avatar);
+                    this.paso = (this.equipo.getColor() + "---" + this.avatar);
                      {
                         try {
                             Thread.sleep(1000);
