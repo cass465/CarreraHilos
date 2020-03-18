@@ -11,19 +11,19 @@ package edu.ucundinamarca.logica;
  */
 public class Equipo {
 
+    private String descripcion;
     private String color;
-    private Ganador ganador;
 
-    public Equipo(String color, Ganador ganador) {
+    public Equipo(String descripcion, String color) {
+        this.descripcion = descripcion;
         this.color = color;
-        this.ganador = ganador;
     }
 
     public String getColor() {
         return color;
     }
 
-    public Ganador getGanador() {
-        return ganador;
+    public String getDescripcion() {
+        return descripcion;
     }
 }

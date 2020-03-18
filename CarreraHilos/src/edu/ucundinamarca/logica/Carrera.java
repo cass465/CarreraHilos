@@ -14,33 +14,31 @@ import java.util.List;
  */
 public class Carrera {
 
-    private List<Equipo> equipos;
-    private List<Corredor> corredores;
-
     public void correr() {
         Ganador ganador = new Ganador();
         
-        Equipo equipo1 = new Equipo("\u001B[31m", ganador); //rojo
-        Equipo equipo2 = new Equipo("\u001B[32m", ganador); //verde
-        Equipo equipo3 = new Equipo("\u001B[34m", ganador); //azul
+        Equipo equipo1 = new Equipo("Equipo1", "\u001B[31m"); //rojo
+        Equipo equipo2 = new Equipo("Equipo2", "\u001B[32m"); //verde
+        Equipo equipo3 = new Equipo("Equipo3", "\u001B[34m"); //azul
         
-        Corredor c1 = new Corredor('x', (byte) 1, equipo1);
-        Corredor c2 = new Corredor('y', (byte) 2, equipo1);
-        Corredor c3 = new Corredor('z', (byte) 3, equipo1);
-        Corredor c4 = new Corredor('x', (byte) 1, equipo2);
-        Corredor c5 = new Corredor('y', (byte) 2, equipo2);
-        Corredor c6 = new Corredor('z', (byte) 3, equipo2);
-        Corredor c7 = new Corredor('x', (byte) 1, equipo3);
-        Corredor c8 = new Corredor('y', (byte) 2, equipo3);
-        Corredor c9 = new Corredor('z', (byte) 3, equipo3);
+        Corredor c1 = new Corredor('x', (byte) 1, equipo1, ganador);
+        Corredor c2 = new Corredor('y', (byte) 2, equipo1, ganador);
+        Corredor c3 = new Corredor('z', (byte) 3, equipo1, ganador);
+        Corredor c4 = new Corredor('x', (byte) 1, equipo2, ganador);
+        Corredor c5 = new Corredor('y', (byte) 2, equipo2, ganador);
+        Corredor c6 = new Corredor('z', (byte) 3, equipo2, ganador);
+        Corredor c7 = new Corredor('x', (byte) 1, equipo3, ganador);
+        Corredor c8 = new Corredor('y', (byte) 2, equipo3, ganador);
+        Corredor c9 = new Corredor('z', (byte) 3, equipo3, ganador);
+        
         c1.start();
         c2.start();
         c3.start();
         c4.start();
         c5.start();
         c6.start();
-        /*c7.start();
+        c7.start();
         c8.start();
-        c9.start();*/
+        c9.start();
     }
 }

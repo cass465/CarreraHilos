@@ -5,8 +5,6 @@
  */
 package edu.ucundinamarca.logica;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,11 +18,13 @@ public class Corredor extends Thread {
     private byte estado;
     private Equipo equipo;
     private String paso;
+    private Ganador ganador;
 
-    public Corredor(char avatar, byte estado, Equipo equipo) {
+    public Corredor(char avatar, byte estado, Equipo equipo, Ganador ganador) {
         this.avatar = avatar;
         this.estado = estado;
         this.equipo = equipo;
+        this.ganador = ganador;
     }
 
     @Override
@@ -61,61 +61,56 @@ public class Corredor extends Thread {
     public void correr() {
         byte nPasos = 0;
         for (int i = 0; i <= 5; i = nPasos + i) {
-            if (this.equipo.getGanador().getEstado() == false) {
-                switch (i) {
-                    case 3:
-                        nPasos = (byte) (Math.random() * 2 + 1);
-                        break;
-                    case 4:
-                        nPasos = 1;
-                        break;
-                    default:
-                        nPasos = (byte) (Math.random() * 3 + 1);
-                        break;
-                }
-
-                switch (nPasos) {
-                    case 1:
-                        this.paso = (this.equipo.getColor() + "-" + this.avatar);
-                        System.out.print(this.equipo.getColor() + "-" + this.avatar);
-                         {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        }
-                        break;
-                    case 2:
-                        this.paso = (this.equipo.getColor() + "--" + this.avatar);
-                        System.out.print(this.equipo.getColor() + "--" + this.avatar);
-                         {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        }
-                        break;
-                    case 3:
-                        this.paso = (this.equipo.getColor() + "---" + this.avatar);
-                        System.out.print(this.equipo.getColor() + "---" + this.avatar);
-                         {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                        }
-                        break;
-                }
-                if (this.avatar == 'z' && i + nPasos == 5) {
-                    //this.equipo.getGanador().setEstado(true);
-                }
-                if (i + nPasos == 5) {
-                    return;
-                }
+            switch (i) {
+                case 3:
+                    nPasos = (byte) (Math.random() * 2 + 1);
+                    break;
+                case 4:
+                    nPasos = 1;
+                    break;
+                default:
+                    nPasos = (byte) (Math.random() * 3 + 1);
+                    break;
             }
+            switch (nPasos) {
+                case 1:
+                    this.paso = (this.equipo.getColor() + "-" + this.avatar);
+                     {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    break;
+                case 2:
+                    this.paso = (this.equipo.getColor() + "--" + this.avatar);
+                     {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    break;
+                case 3:
+                    this.paso = (this.equipo.getColor() + "---" + this.avatar);
+                     {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    break;
+            }
+
+            System.out.print(this.paso);
+
+            if (i + nPasos == 5) {
+                return;
+            }
+
         }
     }
 }
