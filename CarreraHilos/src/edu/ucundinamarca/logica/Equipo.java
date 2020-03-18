@@ -10,18 +10,20 @@ package edu.ucundinamarca.logica;
  * @author cass465
  */
 public class Equipo {
-    private String color;
-    private boolean ganador = false;
 
-    public Equipo(String color) {
+    private String color;
+    private Ganador ganador;
+
+    public Equipo(String color, Ganador ganador) {
         this.color = color;
+        this.ganador = ganador;
     }
 
     public String getColor() {
         return color;
     }
-    
-    public void setGanador(boolean ganador){
-        this.ganador = ganador;
+
+    public Ganador getGanador() {
+        return ganador;
     }
 }

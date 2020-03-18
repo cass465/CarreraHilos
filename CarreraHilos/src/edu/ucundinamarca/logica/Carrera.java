@@ -18,9 +18,11 @@ public class Carrera {
     private List<Corredor> corredores;
 
     public void correr() {
-        Equipo equipo1 = new Equipo("\u001B[31m"); //rojo
-        Equipo equipo2 = new Equipo("\u001B[32m"); //verde
-        Equipo equipo3 = new Equipo("\u001B[34m"); //azul
+        Ganador ganador = new Ganador();
+        
+        Equipo equipo1 = new Equipo("\u001B[31m", ganador); //rojo
+        Equipo equipo2 = new Equipo("\u001B[32m", ganador); //verde
+        Equipo equipo3 = new Equipo("\u001B[34m", ganador); //azul
         
         Corredor c1 = new Corredor('x', (byte) 1, equipo1);
         Corredor c2 = new Corredor('y', (byte) 2, equipo1);
@@ -37,8 +39,8 @@ public class Carrera {
         c4.start();
         c5.start();
         c6.start();
-        c7.start();
+        /*c7.start();
         c8.start();
-        c9.start();
+        c9.start();*/
     }
 }
