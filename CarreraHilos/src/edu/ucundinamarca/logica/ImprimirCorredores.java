@@ -25,7 +25,7 @@ public class ImprimirCorredores extends Thread {
 
     @Override
     public void run() {
-
+        
         if (inicioCarrera) {
             try {
                 sleep(10);

@@ -23,19 +23,19 @@ public class Carrera {
     public void correr() {
         Ganador ganador = new Ganador();
 
-        equipos.add(new Equipo("\u001B[31m", ganador)); //rojo
-        equipos.add(new Equipo("\u001B[32m", ganador)); //verde
-        equipos.add(new Equipo("\u001B[34m", ganador)); //azul
+        equipos.add(new Equipo("EQUIPO1","\u001B[31m")); //rojo
+        equipos.add(new Equipo("EQUIPO1","\u001B[32m")); //verde
+        equipos.add(new Equipo("EQUIPO1","\u001B[34m")); //azul
 
-        corredores.add(new Corredor('x', (byte) 1, equipos.get(0),0,5));
-        corredores.add(new Corredor('y', (byte) 2, equipos.get(0),5,10));
-        corredores.add(new Corredor('z', (byte) 3, equipos.get(0),10,15));
-        corredores.add(new Corredor('x', (byte) 1, equipos.get(1),0,5));
-        corredores.add(new Corredor('y', (byte) 2, equipos.get(1),5,10));
-        corredores.add(new Corredor('z', (byte) 3, equipos.get(1),10,15));
-        corredores.add(new Corredor('x', (byte) 1, equipos.get(2),0,5));
-        corredores.add(new Corredor('y', (byte) 2, equipos.get(2),5,10));
-        corredores.add(new Corredor('z', (byte) 3, equipos.get(2),10,15));
+        corredores.add(new Corredor('x', (byte) 1, equipos.get(0),0,5,ganador));
+        corredores.add(new Corredor('y', (byte) 2, equipos.get(0),5,10,ganador));
+        corredores.add(new Corredor('z', (byte) 3, equipos.get(0),10,15,ganador));
+        corredores.add(new Corredor('x', (byte) 1, equipos.get(1),0,5,ganador));
+        corredores.add(new Corredor('y', (byte) 2, equipos.get(1),5,10,ganador));
+        corredores.add(new Corredor('z', (byte) 3, equipos.get(1),10,15,ganador));
+        corredores.add(new Corredor('x', (byte) 1, equipos.get(2),0,5,ganador));
+        corredores.add(new Corredor('y', (byte) 2, equipos.get(2),5,10,ganador));
+        corredores.add(new Corredor('z', (byte) 3, equipos.get(2),10,15,ganador));
 
         imprimir = new ImprimirCorredores(corredores, equipos);
 

@@ -18,26 +18,25 @@ public class Corredor extends Thread {
     private byte estado;
     private Equipo equipo;
     private String paso;
-    
+
     private int posicionInicio;
     private int posicionFinal;
     private int posicionActual;
     private Ganador ganador;
 
-    public Corredor(char avatar, byte estado, Equipo equipo, int posicionInicio, int posicionFinal) {
-    public Corredor(char avatar, byte estado, Equipo equipo, Ganador ganador) {
+    public Corredor(char avatar, byte estado, Equipo equipo, int posicionInicio, int posicionFinal, Ganador ganador) {
         this.avatar = avatar;
         this.estado = estado;
         this.equipo = equipo;
-        this.posicionInicio=posicionInicio;
-        this.posicionFinal=posicionFinal;
-        this.posicionActual=this.posicionInicio;
-        
+        this.posicionInicio = posicionInicio;
+        this.posicionFinal = posicionFinal;
+        this.posicionActual = this.posicionInicio;
         this.ganador = ganador;
     }
 
     @Override
     public void run() {
+
         if (this.estado == 1) {
             correr();
             synchronized (this.equipo) {
@@ -71,17 +70,6 @@ public class Corredor extends Thread {
         byte nPasos = 0;
         for (int i = 0; i <= 5; i = nPasos + i) {
 
-                switch (nPasos) {
-                    case 1:
-                        this.paso = (this.equipo.getColor() + "-" + this.avatar);                       
-                      // System.out.println(posicion);
-                        //System.out.print(this.equipo.getColor() + "-" + this.avatar);
-                         {
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                                Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-                            }
             switch (i) {
                 case 3:
                     nPasos = (byte) (Math.random() * 2 + 1);
@@ -95,67 +83,69 @@ public class Corredor extends Thread {
             }
             switch (nPasos) {
                 case 1:
-                
+
                     this.paso = (this.equipo.getColor() + "-" + this.avatar);
-                    this.posicionActual+=1;
+                    this.posicionActual += 1;
                      {
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException ex) {
                             Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-                        
+
                         }
                     }
                     break;
                 case 2:
                     this.paso = (this.equipo.getColor() + "--" + this.avatar);
-                    this.posicionActual+=2;
+                    this.posicionActual += 2;
                      {
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException ex) {
                             Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-                        
+
                         }
                     }
                     break;
                 case 3:
                     this.paso = (this.equipo.getColor() + "---" + this.avatar);
-                    this.posicionActual+=3;
+                    this.posicionActual += 3;
                      {
                         try {
                             Thread.sleep(1000);
                         } catch (InterruptedException ex) {
                             Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-                        
+
                         }
-                   
+
                     }
                     break;
-                    
-                    
-                }
-         
 
+            }
             if (i + nPasos == 5) {
+                //Se desborda la posicion final, con el fin de validar
+                this.posicionActual += 4;
                 return;
             }
 
         }
+
     }
 
     public String getPaso() {
         return paso;
     }
-     public int getPosicionInicio(){
+
+    public int getPosicionInicio() {
         return posicionInicio;
     }
-    public int getPosicionActual(){
+
+    public int getPosicionActual() {
         return posicionActual;
     }
-    public int getPosicionFinal(){
+
+    public int getPosicionFinal() {
         return posicionFinal;
     }
-    
-    
+
 }
