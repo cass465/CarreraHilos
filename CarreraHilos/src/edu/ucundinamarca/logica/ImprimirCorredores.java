@@ -17,9 +17,9 @@ public class ImprimirCorredores extends Thread {
 
     private boolean inicioCarrera = true;
     private List<Corredor> corredores;
-    private List<Equipo> equipos;
+    
 
-    public ImprimirCorredores(List<Corredor> corredores, List<Equipo> equipos) {
+    public ImprimirCorredores(List<Corredor> corredores) {
         this.corredores = corredores;
     }
 
@@ -28,6 +28,7 @@ public class ImprimirCorredores extends Thread {
         
         if (inicioCarrera) {
             try {
+                //Permite esperar que todos los hilos de los corredores comiencen 
                 sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ImprimirCorredores.class.getName()).log(Level.SEVERE, null, ex);
