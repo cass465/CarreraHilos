@@ -23,6 +23,11 @@ public class ImpresionCorredores extends Thread {
     private List<Corredor> corredores;
 
     /**
+     * Variable que almacena si la carrera va a comenzar, para validar 
+     */
+    
+    private boolean comienzaCarrera=true;
+    /**
      * Objeto que define en que momento dejar de imprimir
      */
     private Ganador ganador;
@@ -59,18 +64,22 @@ public class ImpresionCorredores extends Thread {
     @Override
     public void run() {
 
-        try {
+        if(comienzaCarrera){
+             try {
             //Permite esperar que empiecen los corredores antes de imprimir sus posiciones
-            sleep(10);
+            sleep(100);
 
         } catch (InterruptedException ex) {
             Logger.getLogger(ImpresionCorredores.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
+       
 
         while (ganador.getEstadoSincronizado() != 2) {
 
             if (ganador.getEstadoSincronizado() == 1) {
                 ganador.setEstadoSincronizado(2);
+                
 
             }
             System.out.println("---------------------------");
