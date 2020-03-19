@@ -6,25 +6,34 @@
 package edu.ucundinamarca.logica;
 
 /**
+ * Clase que genera el ganador de la carrera con el fin de terminarla
  *
- * @author cass465
+ * @author Camilo Sanabria
+ * @version 1.0.0
  */
 public class Ganador {
-    private int estadoSincronizado ;
 
+    /**
+     * Estado que controla si ya existe un ganador
+     */
+    private int estadoSincronizado;
+
+    /**
+     * Obtiene el estado del ganador
+     *
+     * @return El estado del ganador
+     */
     public int getEstadoSincronizado() {
-        return estadoSincronizado;          
+        return estadoSincronizado;
     }
 
+    /**
+     * Establece el estado del ganador
+     *
+     * @param estadoSincronizado Valor que se asigna al estado
+     */
     public void setEstadoSincronizado(int estadoSincronizado) {
         this.estadoSincronizado = estadoSincronizado;
     }
-    
 
-    
-    
-   
-    
-    
-    
 }

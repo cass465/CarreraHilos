@@ -8,12 +8,16 @@ package edu.ucundinamarca.principal;
 import edu.ucundinamarca.logica.Carrera;
 
 /**
+ * Clase principal del programa
  *
- * @author cass465
+ * @author Camilo Sanabria
+ * @version 1.0.0
  */
 public class Main {
 
     /**
+     * Metodo principal que ejecuta el programa
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {

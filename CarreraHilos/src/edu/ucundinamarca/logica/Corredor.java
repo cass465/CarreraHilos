@@ -8,23 +8,65 @@ package edu.ucundinamarca.logica;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
+ * Clase que genera todos los corredores los cuales son hilos
  *
- * @author cass465
+ * @author Camilo Sanabria
+ * @version 1.0.0
  */
 public class Corredor extends Thread {
 
+    /**
+     * Almacena el caracter que representa al corredor
+     */
     private char avatar;
+
+    /**
+     * Define el turno del corredor respecto al equipo
+     */
     private byte estado;
+
+    /**
+     * Almacena el equipo al que pertenece el corredor
+     */
     private Equipo equipo;
+
+    /**
+     * Cadena que guarda el paso del corredor en el instante de tiempo
+     */
     private String paso;
 
+    /**
+     * Posicion inicial del corredor
+     */
     private int posicionInicio;
+
+    /**
+     * Posicion final del corredor
+     */
     private int posicionFinal;
+
+    /**
+     * Posicion actual en la que se encuentra el corredor en el instante de
+     * tiempo
+     */
     private int posicionActual;
+
+    /**
+     * Objeto que se define cuando hay un ganador
+     */
     private Ganador ganador;
 
+    /**
+     * Constructor de clase
+     *
+     * @param avatar Caracter que define al corredor
+     * @param estado Turno del corredor respecto a su equipo
+     * @param equipo Equipo al que pertenece el corredor
+     * @param posicionInicio Posicion numerica de inicio del corredor
+     * @param posicionFinal Posicion numerica de fin del corredor
+     * @param ganador Objeto que se define cuando hay un ganador
+     */
     public Corredor(char avatar, byte estado, Equipo equipo, int posicionInicio, int posicionFinal, Ganador ganador) {
         this.avatar = avatar;
         this.estado = estado;
@@ -35,6 +77,9 @@ public class Corredor extends Thread {
         this.ganador = ganador;
     }
 
+    /**
+     * Metodo que define la manera de correr
+     */
     @Override
     public void run() {
 
@@ -68,6 +113,9 @@ public class Corredor extends Thread {
         }
     }
 
+    /**
+     * Metodo que contiene el algoritmo al momento de dar los pasos
+     */
     public void correr() {
         byte nPasos = 0;
         for (int i = 0; i <= 5; i = nPasos + i) {
@@ -88,26 +136,23 @@ public class Corredor extends Thread {
                     case 1:
                         this.paso = (this.equipo.getColor() + "-" + this.avatar);
                         this.posicionActual += 1;
-                       
 
                         break;
                     case 2:
                         this.paso = (this.equipo.getColor() + "--" + this.avatar);
                         this.posicionActual += 2;
-                       
 
                         break;
                     case 3:
                         this.paso = (this.equipo.getColor() + "---" + this.avatar);
                         this.posicionActual += 3;
-                       
 
                         break;
 
                 }
-                 if ((this.avatar == 'z') && (i + nPasos == 5)) {
-                            this.ganador.setEstadoSincronizado(1);
-                        }
+                if ((this.avatar == 'z') && (i + nPasos == 5)) {
+                    this.ganador.setEstadoSincronizado(1);
+                }
 
                 if (i + nPasos == 5) {
                     if (this.avatar == 'z') {
@@ -123,7 +168,7 @@ public class Corredor extends Thread {
                 }
 
             } else {
-                
+
                 return;
             }
 
@@ -131,6 +176,9 @@ public class Corredor extends Thread {
 
     }
 
+    /**
+     * Metodo que pausa el hilo un segundo
+     */
     public void dormirHilo() {
         {
             try {
@@ -143,18 +191,38 @@ public class Corredor extends Thread {
         }
     }
 
+    /**
+     * Obtiene el valor de paso del corredor
+     *
+     * @return Paso del corredor en el instante de tiempo
+     */
     public String getPaso() {
         return paso;
     }
 
+    /**
+     * Obtiene la posicion inicial del corredor
+     *
+     * @return Posicion inicial del corredor
+     */
     public int getPosicionInicio() {
         return posicionInicio;
     }
 
+    /**
+     * Obtiene la posicion actual del corredor
+     *
+     * @return Posicion actual del corredor
+     */
     public int getPosicionActual() {
         return posicionActual;
     }
 
+    /**
+     * Obtiene la posicion final del corredor
+     *
+     * @return Posicion final del corredor
+     */
     public int getPosicionFinal() {
         return posicionFinal;
     }

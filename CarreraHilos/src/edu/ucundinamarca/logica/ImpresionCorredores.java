@@ -10,42 +10,68 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Clase que imprime el transcurso de la carrera y es un hilo
  *
- * @author YEISON
+ * @author Yeison Cifuentes
+ * @version 1.0.0
  */
-public class ImprimirCorredores extends Thread {
+public class ImpresionCorredores extends Thread {
 
-    private boolean inicioCarrera = true;
+    /**
+     * Lista que almacena todos los corredores de la carrera
+     */
     private List<Corredor> corredores;
+
+    /**
+     * Objeto que define en que momento dejar de imprimir
+     */
     private Ganador ganador;
+
+    /**
+     * Cadena que almacena todos los pasos del equipo 1
+     */
     private StringBuffer pasosEquipo1 = new StringBuffer();
+
+    /**
+     * Cadena que almacena todos los pasos del equipo 2
+     */
     private StringBuffer pasosEquipo2 = new StringBuffer();
+
+    /**
+     * Cadena que almacena todos los pasos del equipo 3
+     */
     private StringBuffer pasosEquipo3 = new StringBuffer();
 
-    public ImprimirCorredores(List<Corredor> corredores, Ganador ganador ) {
+    /**
+     * Constructor de clase
+     *
+     * @param corredores Lista que almacena todos los corredores
+     * @param ganador Objeto que controla la impresion
+     */
+    public ImpresionCorredores(List<Corredor> corredores, Ganador ganador) {
         this.corredores = corredores;
-        this.ganador=ganador;
+        this.ganador = ganador;
     }
 
+    /**
+     * Metodo que imprime el transcurso de la carrera
+     */
     @Override
     public void run() {
 
-        if (inicioCarrera) {
-            try {
-                //Permite esperar que empiecen los corredores antes de imprimir sus posiciones
-                sleep(10);
+        try {
+            //Permite esperar que empiecen los corredores antes de imprimir sus posiciones
+            sleep(10);
 
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ImprimirCorredores.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ImpresionCorredores.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        while (ganador.getEstadoSincronizado()!= 2) {
+        while (ganador.getEstadoSincronizado() != 2) {
 
-            
-            if(ganador.getEstadoSincronizado() == 1){
+            if (ganador.getEstadoSincronizado() == 1) {
                 ganador.setEstadoSincronizado(2);
-              
+
             }
             System.out.println("---------------------------");
 
@@ -107,7 +133,7 @@ public class ImprimirCorredores extends Thread {
             try {
                 sleep(1000);
             } catch (InterruptedException ex) {
-                Logger.getLogger(ImprimirCorredores.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ImpresionCorredores.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

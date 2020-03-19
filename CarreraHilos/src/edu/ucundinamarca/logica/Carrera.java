@@ -9,17 +9,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase que ejecuta la carrera
  *
- * @author cass465
+ * @author Camilo Sanabria
+ * @version 1.0.0
  */
 public class Carrera {
 
+    /**
+     * Lista que almacena los equipos de la carrera
+     */
     private List<Equipo> equipos = new ArrayList<>();
 
+    /**
+     * Lista que almacena todos los corredores
+     */
     private List<Corredor> corredores = new ArrayList<>();
 
-    private ImprimirCorredores imprimir;
+    /**
+     * Hilo que imprime el transcurrso de la carrera
+     */
+    private ImpresionCorredores imprimir;
 
+    /**
+     * Metodo que levanta todos los hilos de la carrera
+     */
     public void correr() {
         Ganador ganador = new Ganador();
 
@@ -37,7 +51,7 @@ public class Carrera {
         corredores.add(new Corredor('y', (byte) 2, equipos.get(2), 5, 10, ganador));
         corredores.add(new Corredor('z', (byte) 3, equipos.get(2), 10, 15, ganador));
 
-        imprimir = new ImprimirCorredores(corredores,ganador);
+        imprimir = new ImpresionCorredores(corredores, ganador);
 
         corredores.get(0).start();
         corredores.get(1).start();
