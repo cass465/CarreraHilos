@@ -10,15 +10,21 @@ package edu.ucundinamarca.logica;
  * @author cass465
  */
 public class Ganador {
-    private boolean estado = false;
-    
-    public boolean getEstado() {
-        return estado;
+    private int estadoSincronizado ;
+
+    public int getEstadoSincronizado() {
+        return estadoSincronizado;          
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setEstadoSincronizado(int estadoSincronizado) {
+        this.estadoSincronizado = estadoSincronizado;
     }
+    
+
+    
+    
+   
+    
     
     
 }

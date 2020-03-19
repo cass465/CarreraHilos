@@ -8,6 +8,7 @@ package edu.ucundinamarca.logica;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
  * @author cass465
@@ -62,6 +63,7 @@ public class Corredor extends Thread {
                     Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+
             correr();
         }
     }
@@ -70,7 +72,7 @@ public class Corredor extends Thread {
         byte nPasos = 0;
         for (int i = 0; i <= 5; i = nPasos + i) {
 
-            if (this.ganador.getEstado() == false) {
+            if (this.ganador.getEstadoSincronizado() == 0) {
                 switch (i) {
                     case 3:
                         nPasos = (byte) (Math.random() * 2 + 1);
@@ -86,40 +88,43 @@ public class Corredor extends Thread {
                     case 1:
                         this.paso = (this.equipo.getColor() + "-" + this.avatar);
                         this.posicionActual += 1;
-                        if ((this.avatar == 'z') && (i + nPasos == 5)) {
-                            this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " gana");
-                        }
-                        dormirHilo();
+                       
+
                         break;
                     case 2:
                         this.paso = (this.equipo.getColor() + "--" + this.avatar);
                         this.posicionActual += 2;
-                        if ((this.avatar == 'z') && (i + nPasos == 5)) {
-                            this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " gana");
-                        }
-                        dormirHilo();
+                       
+
                         break;
                     case 3:
                         this.paso = (this.equipo.getColor() + "---" + this.avatar);
                         this.posicionActual += 3;
-                        if ((this.avatar == 'z') && (i + nPasos == 5)) {
-                            this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " gana");
-                        }
-                        dormirHilo();
+                       
+
                         break;
 
                 }
+                 if ((this.avatar == 'z') && (i + nPasos == 5)) {
+                            this.ganador.setEstadoSincronizado(1);
+                        }
 
                 if (i + nPasos == 5) {
-                    //Se desborda la posicion final, con el fin de validar
-                    this.posicionActual += 4;
-
                     if (this.avatar == 'z') {
-                        System.exit(0);
+                        this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " GANA");
                     }
-
+                    dormirHilo();
+                    //Se desborda la posicion final, con el fin de validar
+                    this.posicionActual += 100;
                     return;
+
+                } else {
+                    dormirHilo();
                 }
+
+            } else {
+                
+                return;
             }
 
         }

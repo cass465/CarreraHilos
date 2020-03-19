@@ -17,12 +17,14 @@ public class ImprimirCorredores extends Thread {
 
     private boolean inicioCarrera = true;
     private List<Corredor> corredores;
+    private Ganador ganador;
     private StringBuffer pasosEquipo1 = new StringBuffer();
     private StringBuffer pasosEquipo2 = new StringBuffer();
     private StringBuffer pasosEquipo3 = new StringBuffer();
 
-    public ImprimirCorredores(List<Corredor> corredores) {
+    public ImprimirCorredores(List<Corredor> corredores, Ganador ganador ) {
         this.corredores = corredores;
+        this.ganador=ganador;
     }
 
     @Override
@@ -38,16 +40,13 @@ public class ImprimirCorredores extends Thread {
             }
         }
 
-        while (corredores.get(0).getPosicionActual() <= corredores.get(0).getPosicionFinal()
-                || corredores.get(1).getPosicionActual() <= corredores.get(1).getPosicionFinal()
-                || corredores.get(2).getPosicionActual() <= corredores.get(2).getPosicionFinal()
-                || corredores.get(3).getPosicionActual() <= corredores.get(3).getPosicionFinal()
-                || corredores.get(4).getPosicionActual() <= corredores.get(4).getPosicionFinal()
-                || corredores.get(5).getPosicionActual() <= corredores.get(5).getPosicionFinal()
-                || corredores.get(6).getPosicionActual() <= corredores.get(6).getPosicionFinal()
-                || corredores.get(7).getPosicionActual() <= corredores.get(7).getPosicionFinal()
-                || corredores.get(8).getPosicionActual() <= corredores.get(8).getPosicionFinal()) {
+        while (ganador.getEstadoSincronizado()!= 2) {
 
+            
+            if(ganador.getEstadoSincronizado() == 1){
+                ganador.setEstadoSincronizado(2);
+              
+            }
             System.out.println("---------------------------");
 
             if (corredores.get(0).getPosicionActual() <= corredores.get(0).getPosicionFinal()
@@ -64,10 +63,6 @@ public class ImprimirCorredores extends Thread {
             if (corredores.get(2).getPosicionActual() <= corredores.get(2).getPosicionFinal()
                     && corredores.get(2).getPosicionActual() != corredores.get(2).getPosicionInicio()) {
                 pasosEquipo1.append(corredores.get(2).getPaso());
-                System.out.println(pasosEquipo1);
-            }
-
-            if (corredores.get(2).getPosicionActual() - 4 == corredores.get(2).getPosicionFinal()) {
                 System.out.println(pasosEquipo1);
             }
 
@@ -88,10 +83,6 @@ public class ImprimirCorredores extends Thread {
                 System.out.println(pasosEquipo2);
             }
 
-            if (corredores.get(5).getPosicionActual() - 4 == corredores.get(5).getPosicionFinal()) {
-                System.out.println(pasosEquipo2);
-            }
-
             if (corredores.get(6).getPosicionActual() <= corredores.get(6).getPosicionFinal()
                     && corredores.get(6).getPosicionActual() != corredores.get(6).getPosicionInicio()) {
                 pasosEquipo3.append(corredores.get(6).getPaso());
@@ -109,9 +100,6 @@ public class ImprimirCorredores extends Thread {
                 System.out.println(pasosEquipo3);
             }
 
-            if (corredores.get(8).getPosicionActual() - 4 == corredores.get(8).getPosicionFinal()) {
-                System.out.println(pasosEquipo3);
-            }
             System.out.println("---------------------------");
             System.out.println("");
             System.out.println("");
