@@ -37,7 +37,7 @@ public class Carrera {
         corredores.add(new Corredor('y', (byte) 2, equipos.get(2),5,10,ganador));
         corredores.add(new Corredor('z', (byte) 3, equipos.get(2),10,15,ganador));
 
-        imprimir = new ImprimirCorredores(corredores, equipos);
+        imprimir = new ImprimirCorredores(corredores);
 
         corredores.get(0).start();
         corredores.get(1).start();
