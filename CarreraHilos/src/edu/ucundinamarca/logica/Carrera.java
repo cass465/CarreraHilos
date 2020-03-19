@@ -15,9 +15,9 @@ import java.util.List;
 public class Carrera {
 
     private List<Equipo> equipos = new ArrayList<>();
-    ;
+    
     private List<Corredor> corredores = new ArrayList<>();
-    ;
+    
     private ImprimirCorredores imprimir;
 
     public void correr() {
