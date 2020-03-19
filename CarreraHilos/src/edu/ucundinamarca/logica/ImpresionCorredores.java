@@ -67,7 +67,8 @@ public class ImpresionCorredores extends Thread {
         if(comienzaCarrera){
              try {
             //Permite esperar que empiecen los corredores antes de imprimir sus posiciones
-            sleep(100);
+            sleep(10);
+            comienzaCarrera=false;
 
         } catch (InterruptedException ex) {
             Logger.getLogger(ImpresionCorredores.class.getName()).log(Level.SEVERE, null, ex);
