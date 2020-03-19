@@ -78,11 +78,7 @@ public class ImpresionCorredores extends Thread {
 
         while (ganador.getEstadoSincronizado() != 2) {
 
-            if (ganador.getEstadoSincronizado() == 1) {
-                ganador.setEstadoSincronizado(2);
-                
-
-            }
+          
             System.out.println("---------------------------");
 
             if (corredores.get(0).getPosicionActual() <= corredores.get(0).getPosicionFinal()
@@ -134,6 +130,10 @@ public class ImpresionCorredores extends Thread {
                     && corredores.get(8).getPosicionActual() != corredores.get(8).getPosicionInicio()) {
                 pasosEquipo3.append(corredores.get(8).getPaso());
                 System.out.println(pasosEquipo3);
+            }
+            
+              if (ganador.getEstadoSincronizado() == 1) {
+                ganador.setEstadoSincronizado(2);
             }
 
             System.out.println("---------------------------");
