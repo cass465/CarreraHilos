@@ -32,9 +32,6 @@ public class ImprimirCorredores extends Thread {
             try {
                 //Permite esperar que empiecen los corredores antes de imprimir sus posiciones
                 sleep(10);
-               
-                         
-                          
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(ImprimirCorredores.class.getName()).log(Level.SEVERE, null, ex);

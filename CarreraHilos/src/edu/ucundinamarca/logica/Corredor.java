@@ -70,66 +70,72 @@ public class Corredor extends Thread {
         byte nPasos = 0;
         for (int i = 0; i <= 5; i = nPasos + i) {
 
-            switch (i) {
-                case 3:
-                    nPasos = (byte) (Math.random() * 2 + 1);
-                    break;
-                case 4:
-                    nPasos = 1;
-                    break;
-                default:
-                    nPasos = (byte) (Math.random() * 3 + 1);
-                    break;
-            }
-            switch (nPasos) {
-                case 1:
-
-                    this.paso = (this.equipo.getColor() + "-" + this.avatar);
-                    this.posicionActual += 1;
-                     {
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-
+            if (this.ganador.getEstado() == false) {
+                switch (i) {
+                    case 3:
+                        nPasos = (byte) (Math.random() * 2 + 1);
+                        break;
+                    case 4:
+                        nPasos = 1;
+                        break;
+                    default:
+                        nPasos = (byte) (Math.random() * 3 + 1);
+                        break;
+                }
+                switch (nPasos) {
+                    case 1:
+                        this.paso = (this.equipo.getColor() + "-" + this.avatar);
+                        this.posicionActual += 1;
+                        if ((this.avatar == 'z') && (i + nPasos == 5)) {
+                            this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " gana");
                         }
-                    }
-                    break;
-                case 2:
-                    this.paso = (this.equipo.getColor() + "--" + this.avatar);
-                    this.posicionActual += 2;
-                     {
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-
+                        dormirHilo();
+                        break;
+                    case 2:
+                        this.paso = (this.equipo.getColor() + "--" + this.avatar);
+                        this.posicionActual += 2;
+                        if ((this.avatar == 'z') && (i + nPasos == 5)) {
+                            this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " gana");
                         }
-                    }
-                    break;
-                case 3:
-                    this.paso = (this.equipo.getColor() + "---" + this.avatar);
-                    this.posicionActual += 3;
-                     {
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
-
+                        dormirHilo();
+                        break;
+                    case 3:
+                        this.paso = (this.equipo.getColor() + "---" + this.avatar);
+                        this.posicionActual += 3;
+                        if ((this.avatar == 'z') && (i + nPasos == 5)) {
+                            this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " gana");
                         }
+                        dormirHilo();
+                        break;
 
+                }
+
+                if (i + nPasos == 5) {
+                    //Se desborda la posicion final, con el fin de validar
+                    this.posicionActual += 4;
+
+                    if (this.avatar == 'z') {
+                        System.exit(0);
                     }
-                    break;
 
-            }
-            if (i + nPasos == 5) {
-                //Se desborda la posicion final, con el fin de validar
-                this.posicionActual += 4;
-                return;
+                    return;
+                }
             }
 
         }
 
+    }
+
+    public void dormirHilo() {
+        {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Corredor.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+
+        }
     }
 
     public String getPaso() {
