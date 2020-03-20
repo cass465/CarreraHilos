@@ -118,7 +118,7 @@ public class Corredor extends Thread {
      */
     public void correr() {
         byte nPasos = 0;
-        for (int i = 0; i <= 5; i = nPasos + i) {
+        for (int i = 0; i <= 20; i = nPasos + i) {
 
             if (this.ganador.getEstadoSincronizado() == 0) {
                 switch (i) {
@@ -150,11 +150,11 @@ public class Corredor extends Thread {
                         break;
 
                 }
-                if ((this.avatar == 'z') && (i + nPasos == 5)) {
+                if ((this.avatar == 'z') && (i + nPasos == 20)) {
                     this.ganador.setEstadoSincronizado(1);
                 }
 
-                if (i + nPasos == 5) {
+                if (i + nPasos == 20) {
                     if (this.avatar == 'z') {
                         this.paso += (" " + this.equipo.getColor() + this.equipo.getDescripcion() + " GANA");
                     }
